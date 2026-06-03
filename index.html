@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Support Agent Interview </title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Interview System</title>
+    <style>
+        :root {
+            --primary-bg: #05050a;
+            --card-bg: #0d0d1a;
+            --accent: #00f2fe;
+            --accent-hover: #4facfe;
+            --neon-pink: #ff007f;
+            --success: #39ff14;
+            --danger: #ff3131;
+            --text-main: #f8fafc;
+            --text-muted: #8b9bb4;
+            --border-color: #1e1e38;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at center, #120c24, var(--primary-bg));
+            background-attachment: fixed;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--text-main);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15), 0 0 30px rgba(12, 12, 26, 0.8);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            letter-spacing: 0.05em;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+        }
+        
+        h1 span {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 5px rgba(0, 242, 254, 0.3);
+        }
+        
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: #030307;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            color: var(--text-main);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+        }
+        
+        input[type="text"]:focus, input[type="password"]:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4), inset 0 0 8px rgba(0,0,0,0.6);
+            background-color: #05050f;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+        
+        button:hover {
+            background-color: var(--accent);
+            color: #05050a;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+            transform: translateY(-1px);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .question-card {
+            background: rgba(3, 3, 7, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            border-color: rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.1);
+        }
+        
+        .question-meta {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--neon-pink);
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 5px rgba(255, 0, 127, 0.3);
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+        
+        .answer-text {
+            background: #020205;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 20px;
+            color: #d1d5db;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .btn-opt {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            background: rgba(13, 13, 26, 0.6);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-opt:hover {
+            color: var(--text-main);
+            border-color: #3b3b6d;
+        }
+        
+        .btn-correct.active {
+            background-color: transparent !important;
+            color: var(--success) !important;
+            border: 2px solid var(--success) !important;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+            text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+        }
+        
+        .btn-wrong.active {
+            background-color: transparent !important;
+            color: var(--danger) !important;
+            border: 2px solid var(--danger) !important;
+            box-shadow: 0 0 15px rgba(255, 49, 49, 0.4);
+            text-shadow: 0 0 5px rgba(255, 49, 49, 0.5);
+        }
+        
+        .score-banner {
+            position: sticky;
+            top: 20px;
+            background: #030307;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: var(--text-main);
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+        }
+        
+        .score-banner span {
+            color: var(--accent);
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 242, 254, 0.5);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .footer span {
+            color: var(--neon-pink);
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 0, 127, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SOS <span>Interview Panel</span></h1>
+    
+    <div id="setup-screen">
+        <div class="form-group">
+            <label for="candidate-name">Candidate Name</label>
+            <input type="text" id="candidate-name" placeholder="Enter candidate's full nickname">
+        </div>
+        <div class="form-group">
+            <label for="format-select">Select Interview Format</label>
+            <select id="format-select">
+                <option value="10">10 Questions (Short)</option>
+                <option value="15">15 Questions (Medium)</option>
+                <option value="20">20 Questions (Standard)</option>
+                <option value="25">25 Questions (Long)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="panel-password">Access Password</label>
+            <input type="password" id="panel-password" placeholder="Enter security password to begin">
+        </div>
+        <button onclick="startInterview()">Start Interview</button>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
+        <div class="score-banner">
+            Candidate: <span id="runtime-name"></span> &nbsp;|&nbsp; Score: <span id="runtime-score">0</span> / <span id="runtime-total">0</span>
+        </div>
+        <div id="questions-container"></div>
+        <button id="submit-btn" onclick="submitInterview()" style="border-color: var(--success); color: var(--success); background: transparent;">Submit Report & Send to Telegram</button>
+    </div>
+</div>
+
+<div class="footer">
+    © Powered By <span>Lord_Lion</span>
+</div>
+
+<script>
+const TG_TOKEN = "8935462246:AAE-QzSCutyOYZ8CtSaPok3v6EZTF7GyOps";
+const TG_USER_ID = "5599632633";
+const MASTER_PASSWORD = "Vk18";
+
+const dataPool = {
+    rp: [
+        { q: "What is Death Match?", a: "Murder without a reason" },
+        { q: "What is Spawn Kill?", a: "Murder at spawn" },
+        { q: "What is Friendly Fire?", a: "Shooting at your teammates/friends" },
+        { q: "What is Drive By?", a: "Murder from a vehicle / by machine" },
+        { q: "What is Team Kill?", a: "Murder of members of your team, organization, family, or any other allies" },
+        { q: "What is Role Play?", a: "Role-playing where each player must follow their character’s role." },
+        { q: "What is Power Gaming?", a: "Acting like a hero beyond your character’s abilities, e.g., being alone against many. Overstating a character’s capabilities." },
+        { q: "What is Revenge Kill?", a: "Returning to a location where you were killed to take revenge; repeated intentional killing of the same player." },
+        { q: "What is Out-of-RolePlay?", a: "Avoiding RP." },
+        { q: "What is Fear RolePlay?", a: "Your character should fear death, as they would in real life." },
+        { q: "What is Out of Character?", a: "Information or actions unrelated to the RP game." },
+        { q: "What is In Character?", a: "Everything concerning the in-game world; written in normal chat." }
+    ],
+    commands: [
+        { q: "How do I open the donation menu?", a: "/donate" },
+        { q: "What command should I use to show my passport to another player?", a: "/pass [id]" },
+        { q: "How do I display my military ID to someone?", a: "/showvb [id]" },
+        { q: "Which command shows my driving licenses for categories A, B, and C?", a: "/drive [id]" },
+        { q: "How can I show my other, non-driving licenses to a specific player?", a: "/lic [id]" },
+        { q: "What is the command to show my medical record?", a: "/med [id]" },
+        { q: "How do I view my log of account warnings?", a: "/warnlog" },
+        { q: "What command allows me to view the nickname history of a specific player?", a: "/history [player name]" },
+        { q: "How do I transfer money to another player?", a: "/pay [id] [amount]" },
+        { q: "Which command is used to sell gold coins to another player for a specific price?", a: "/sellgold [id] [number of coins] [price]" },
+        { q: "How do I open the list of available character animations?", a: "/anim" },
+        { q: "What command activates the navigator feature?", a: "/gps" },
+        { q: "How do I use a first aid kit to heal myself?", a: "/healme" },
+        { q: "What command should I use to use a jack on a vehicle?", a: "/domkrat" },
+        { q: "How do I check the exact in-game time?", a: "/time" },
+        { q: "What command shows the list of organization leaders currently online?", a: "/leaders" },
+        { q: "How can I view a list of lawyers who are currently online?", a: "/adlist" },
+        { q: "What command opens the main car menu?", a: "/car" },
+        { q: "How do I access the main menu for a company?", a: "/company" },
+        { q: "Which command allows me to show a vehicle's title to another player?", a: "/pts [id]" },
+        { q: "What command is used to get married to another player?", a: "/wedding [id]" },
+        { q: "How do I officially get a divorce?", a: "/divorce" },
+        { q: "What command displays my garage info and management options?", a: "/garage" },
+        { q: "How do I sell my garage back to the state?", a: "/sellgarage" },
+        { q: "Which command allows me to sell my garage directly to another player for a specific amount?", a: "/sellmygarage [id] [amount]" },
+        { q: "How do I enter a promo code to claim a reward?", a: "/promo" },
+        { q: "What command do I use to select a specific radio channel?", a: "/radio [1-2]" },
+        { q: "How do I post a custom advertisement text?", a: "/ad [text]" },
+        { q: "What command lets me view the media rankings?", a: "/ratingnews" },
+        { q: "How can I view my recent notifications?", a: "/notify" },
+        { q: "What command allows me to see which job or faction interviews are currently taking place?", a: "/vacancery" },
+        { q: "How do I view the list of active mechanics?", a: "/mlist" },
+        { q: "What command is used to set a custom chat prefix?", a: "/prefix" },
+        { q: "How do I enable the built-in MP3 player?", a: "/mp3" },
+        { q: "What command turns on music inside a car?", a: "/music" },
+        { q: "How do I perform an online music search?", a: "/lmusic" },
+        { q: "What command completely hides the game interface, and restores it if entered again?", a: "/cameditgui" },
+        { q: "What command should I use to initiate a regular phone call?", a: "/call [number]" },
+        { q: "How do I send a text message in the non-RP chat channel?", a: "/n [text]" },
+        { q: "What is the command to shout a message loudly to nearby players?", a: "/s [text]" },
+        { q: "How do I whisper a quiet message to someone close to me?", a: "/w [text]" },
+        { q: "Which command should I use to broadcast a message through a vehicle megaphone?", a: "/m [text]" },
+        { q: "How do I transmit a message over the standard radio channel?", a: "/r [text]" },
+        { q: "What command allows me to send a text message in the department chat?", a: "/d [text]" },
+        { q: "Which command is used to speak on the transport companies radio?", a: "/tc [text]" },
+        { q: "How do I send a message over the airline companies radio channel?", a: "/ac [text]" },
+        { q: "What command do I use to communicate via the cash-in-transit radio?", a: "/ic [text]" },
+        { q: "How can I send an official message or announcement to the state news?", a: "/gnews [text]" },
+        { q: "Which command do I use to describe a first-person action for my character?", a: "/me [text]" },
+        { q: "What command is used to describe a third-person action or environment event?", a: "/do [text]" },
+        { q: "How do I attempt an action that depends on a 50% success chance outcome?", a: "/try [text]" },
+        { q: "What command do I use to combine normal chat text with ongoing actions?", a: "/todo" },
+        { q: "How can I ignore a specific player's voice chat transmission?", a: "/vmute [id]" },
+        { q: "What command should I enter to check my general house information?", a: "/home" },
+        { q: "How do I move another player into my house for a specific amount and duration?", a: "/live [id] [number of days] [amount]" },
+        { q: "What command do I use to officially move out of my current house?", a: "/liveout" },
+        { q: "How can I sell my owned house back to the state?", a: "/sellhome" },
+        { q: "What command allows me to sell my house directly to another player for a specific price?", a: "/sellmyhome [player id] [price]" },
+        { q: "Which command is used to lock or unlock a hotel room door?", a: "/hlock" },
+        { q: "How do I open the main business management menu?", a: "/business" },
+        { q: "What command do I use for tracking and gas station monitoring?", a: "/fuel" },
+        { q: "How do I sell a business directly to another player for a set price?", a: "/sellmybiz [id] [price]" },
+        { q: "Which command displays a player's official financial stats?", a: "/fbiz" },
+        { q: "What short command allows me to lock or unlock my active vehicle?", a: "/lk" },
+        { q: "What command should I use to buy a fuel can while visiting a gas station?", a: "/fill" },
+        { q: "How do I permanently park my current vehicle at its present location?", a: "/park" },
+        { q: "What command is used to fix or repair a vehicle utilizing a repair kit?", a: "/rem" },
+        { q: "How do I sell my current personal vehicle back to the state?", a: "/sellcar" },
+        { q: "How do I sell my personal vehicle directly to another player?", a: "/sellmycar" },
+        { q: "What command is used to trade or exchange vehicles with another player, including a surcharge?", a: "/changecar [id] [surcharge]" },
+        { q: "How do I access the primary family settings and menu?", a: "/fammenu" },
+        { q: "What command opens up the storage space for the family warehouse?", a: "/famsklad" },
+        { q: "How do I send a text transmission across the dedicated family radio?", a: "/famchat [text]" },
+        { q: "What command allows me to block or mute the radio channel for a specific family member?", a: "/fammute [id]" },
+        { q: "How do I formally adopt or invite a new member into the family?", a: "/faminvite [id]" },
+        { q: "What command is used to exclude or kick a member out of the family?", a: "/famkick [id]" },
+        { q: "How can I modify or change a specific family member's rank?", a: "/famrank [id] [rank]" },
+        { q: "How do I park family-owned transport vehicles?", a: "/fpark" },
+        { q: "How do I safely unload all active family vehicles at once?", a: "/funloadcar" },
+        { q: "What command allows me to add a player's nickname directly to the family blacklist?", a: "/famban [player nickname]" }
+    ],
+    project: [
+        { q: "From what level can you work as a pilot?", a: "From level 12 or 15 (Check Server rules variance)" },
+        { q: "What should I do if I don't receive a Live Coin on Doing Top-up?", a: "Use /donate - check" },
+        { q: "What materials are needed to build a greenhouse?", a: "Wood, glass, and rebar" },
+        { q: "What determines the salary level for an Employee in Any Faction?", a: "The level or Rank of the employee" },
+        { q: "When does the family container capture begin?", a: "Every hour at random times" },
+        { q: "From what level can you work as a Bus Driver?", a: "From level 2" },
+        { q: "From what level can you work as a Delivery Guy?", a: "From level 2" },
+        { q: "From what level can you work as a Taxi Driver?", a: "From level 2" },
+        { q: "From what level can you work as a Mine Worker?", a: "From level 3" },
+        { q: "From what level can you work as a Mechanic?", a: "From level 3" },
+        { q: "From what level can you work as a Scavenger?", a: "From level 4" },
+        { q: "From what level can you work as a Trucker?", a: "From level 5" },
+        { q: "From what level can you work as a Car assembler?", a: "From level 7" },
+        { q: "From what level can you work as a Fire Fighter?", a: "From level 8" },
+        { q: "From what level can you work as a Vehicle transporter?", a: "From level 9" },
+        { q: "From what level can you work as a Collector?", a: "From level 10" },
+        { q: "Name 5 Government Organizations.", a: "Government, FSB, Army, Police, Traffic Police, EMERCOM, Hospitals, OTV/RTV, Supreme Court" },
+        { q: "Name 3 Criminal Organizations.", a: "Tambov OCG, Peaky Blinders, Izmailovskaya OCG, Real Boys" },
+        { q: "Tell the Location of any 2 Banks.", a: "Arzamas Bank, South Bank, Batyrevo Bank, Litvagrad Bank" },
+        { q: "What is Bizz war or Bizz Arrow?", a: "War between 2 Crime Groups for control over a Business." }
+    ],
+    support: [
+        { q: "What is the minimum daily requirement for a Game Helper?", a: "2 hours of activity and 10 answers." },
+        { q: "How must a Game Helper behave in-game?", a: "Politely, because they represent the project." },
+        { q: "Which platforms must be used to secure a game account?", a: "Telegram, VK, email, and security codes." },
+        { q: "Whose instructions must a Game Helper follow?", a: "The Chief Overseer and their deputy." },
+        { q: "What is the maximum punishment for violating server rules?", a: "Removal from the position." },
+        { q: "What is the minimum term a support agent must serve?", a: "7 days." },
+        { q: "What is the penalty for failing to complete the minimum 7-day term?", a: "An in-game warn." },
+        { q: "On what factors is a promotion to administrator based?", a: "Activity and personal qualities, considered individually." },
+        { q: "Where must requests to take leave be submitted?", a: "In the forums." },
+        { q: "Are Game Helpers allowed to own property on the server?", a: "Yes, they can own any property." },
+        { q: "Can a Game Helper hold leadership positions in factions?", a: "Yes, they can hold positions as a deputy or leader." },
+        { q: "For what reasons can a helper issue player mutes?", a: "For off-topic messages, inappropriate behavior, etc." },
+        { q: "Is a Game Helper allowed to play on alternate (twink) accounts?", a: "No, it is strictly prohibited." },
+        { q: "Why are responses like 'Specify' or 'Check prices at C/R' forbidden?", a: "Answers must be complete, understandable, and not rushed." },
+        { q: "What should a helper check before sending an answer?", a: "Clarity and grammar." },
+        { q: "Is flooding the helper chat permitted?", a: "No, flooding the helper chat is prohibited." },
+        { q: "When is it acceptable to transfer a question to /report 1?", a: "Only when administrative intervention is required (e.g., DM attacks or getting pulled out of water)." },
+        { q: "Whose permission is required to change an in-game nickname?", a: "The Chief Overseer." },
+        { q: "Can a Game Helper use the /ans command for personal communication?", a: "No, using /ans for personal purposes is prohibited." },
+        { q: "What is the penalty for begging for a promotion in general chats?", a: "Removal from the position." }
+    ]
+};
+
+const formats = {
+    "10": { rp: 3, commands: 4, project: 1, support: 2 },
+    "15": { rp: 4, commands: 5, project: 2, support: 4 },
+    "20": { rp: 5, commands: 7, project: 3, support: 5 },
+    "25": { rp: 6, commands: 9, project: 4, support: 6 }
+};
+
+let activeInterview = {
+    name: "",
+    format: "",
+    selectedQuestions: [],
+    results: {}
+};
+
+function getRandomSubarray(arr, size) {
+    let shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+}
+
+function startInterview() {
+    const nameInput = document.getElementById("candidate-name").value.trim();
+    const passwordInput = document.getElementById("panel-password").value;
+
+    if (!nameInput) {
+        alert("Please enter a Candidate Name first!");
+        return;
+    }
+
+    if (passwordInput !== MASTER_PASSWORD) {
+        alert("Incorrect Security Password! Access Denied.");
+        return;
+    }
+
+    const formatVal = document.getElementById("format-select").value;
+    const blueprint = formats[formatVal];
+    
+    activeInterview.name = nameInput;
+    activeInterview.format = formatVal;
+    activeInterview.selectedQuestions = [];
+    activeInterview.results = {};
+
+    for (const category in blueprint) {
+        const countNeeded = blueprint[category];
+        const selected = getRandomSubarray(dataPool[category], countNeeded).map(item => ({
+            ...item,
+            category: category.toUpperCase()
+        }));
+        activeInterview.selectedQuestions.push(...selected);
+    }
+
+    activeInterview.selectedQuestions = getRandomSubarray(activeInterview.selectedQuestions, activeInterview.selectedQuestions.length);
+
+    document.getElementById("runtime-name").innerText = activeInterview.name;
+    document.getElementById("runtime-total").innerText = activeInterview.selectedQuestions.length;
+    document.getElementById("runtime-score").innerText = "0";
+    
+    renderQuestions();
+
+    document.getElementById("setup-screen").classList.add("hidden");
+    document.getElementById("quiz-screen").classList.remove("hidden");
+}
+
+function renderQuestions() {
+    const container = document.getElementById("questions-container");
+    container.innerHTML = "";
+
+    activeInterview.selectedQuestions.forEach((qObj, index) => {
+        const card = document.createElement("div");
+        card.className = "question-card";
+        card.innerHTML = `
+            <div class="question-meta">Question ${index + 1} — ${qObj.category}</div>
+            <div class="question-text">${qObj.q}</div>
+            <div class="answer-text"><strong>Expected Answer:</strong> ${qObj.a}</div>
+            <div class="btn-group">
+                <button type="button" class="btn-opt btn-correct" id="correct-${index}" onclick="setVerdict(${index}, true)">1. Correct (+1)</button>
+                <button type="button" class="btn-opt btn-wrong" id="wrong-${index}" onclick="setVerdict(${index}, false)">2. Wrong (+0)</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function setVerdict(index, isCorrect) {
+    activeInterview.results[index] = isCorrect;
+
+    const correctBtn = document.getElementById(`correct-${index}`);
+    const wrongBtn = document.getElementById(`wrong-${index}`);
+
+    if (isCorrect) {
+        correctBtn.classList.add("active");
+        wrongBtn.classList.remove("active");
+    } else {
+        wrongBtn.classList.add("active");
+        correctBtn.classList.remove("active");
+    }
+
+    let activeScore = 0;
+    for (const key in activeInterview.results) {
+        if (activeInterview.results[key] === true) activeScore++;
+    }
+    document.getElementById("runtime-score").innerText = activeScore;
+}
+
+function submitInterview() {
+    const totalQuestionsCount = activeInterview.selectedQuestions.length;
+    const answeredCount = Object.keys(activeInterview.results).length;
+
+    if (answeredCount < totalQuestionsCount) {
+        if (!confirm("Some questions haven't been graded yet. Are you sure you want to finish and log data?")) {
+            return;
+        }
+    }
+
+    document.getElementById("submit-btn").innerText = "Sending Data...";
+    document.getElementById("submit-btn").disabled = true;
+
+    let finalScore = 0;
+    let detailsText = "";
+
+    activeInterview.selectedQuestions.forEach((qObj, index) => {
+        const status = activeInterview.results[index];
+        let verdict = "❌ WRONG/NO ANSWER";
+        if (status === true) {
+            finalScore++;
+            verdict = "✅ CORRECT";
+        }
+        const cleanQ = qObj.q.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        detailsText += `\n<b>${index + 1}. Q:</b> ${cleanQ}\n   <i>Verdict:</i> ${verdict}\n`;
+    });
+
+    const percentage = ((finalScore / totalQuestionsCount) * 100).toFixed(1);
+    const passedStatus = percentage >= 60.0 ? "PASSED 🎉" : "FAILED ❌";
+
+    const cleanName = activeInterview.name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const message = `🚀 <b>NEW INTERVIEW REPORT</b>\n\n` +
+                    `👤 <b>Candidate:</b> ${cleanName}\n` +
+                    `📊 <b>Format Choice:</b> ${activeInterview.format} Questions\n` +
+                    `🎯 <b>Final Score:</b> ${finalScore} / ${totalQuestionsCount} (${percentage}%)\n` +
+                    `📈 <b>Status Result:</b> ${passedStatus}\n` +
+                    `\n-----------------------------\n` +
+                    `📝 <b>Detailed Assessment Log:</b>` + detailsText;
+
+    const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
+    
+    fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: TG_USER_ID,
+            text: message,
+            parse_mode: "HTML"
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Report successfully logged and sent to Telegram Bot!");
+        } else {
+            alert("Report generated locally, but failed to connect to Telegram API. Make sure you pressed 'Start' on your bot first!");
+        }
+        resetToNext();
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Network structural connection error trying to contact Telegram.");
+        resetToNext();
+    });
+}
+
+function resetToNext() {
+    document.getElementById("candidate-name").value = "";
+    document.getElementById("panel-password").value = "";
+    document.getElementById("format-select").selectedIndex = 0;
+    document.getElementById("submit-btn").innerText = "Submit Report & Send to Telegram";
+    document.getElementById("submit-btn").disabled = false;
+
+    document.getElementById("quiz-screen").classList.add("hidden");
+    document.getElementById("setup-screen").classList.remove("hidden");
+    window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>
+    
+  </body>
+  
+</html>
